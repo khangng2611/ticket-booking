@@ -24,10 +24,14 @@ const ticket = new mongoose.Schema({
     required: true
   },
   departureTime: {
-    type: String,
+    type: Date,
     required: true
   },
   quantity: {
+    type: Number,
+    required: true
+  },
+  price: {
     type: Number,
     required: true
   },

@@ -12,8 +12,9 @@ const ticketValidation = {
         ticket: Joi.object().keys({
             fromStation: Joi.string().required(),
             toStation: Joi.string().required(),
-            departureTime: Joi.string().required(),
+            departureTime: Joi.number().required(),
             quantity: Joi.number().required().min(1),
+            price: Joi.number().required().min(1)
         }),
     })
 };
@@ -30,6 +31,7 @@ export const bookTicketValidation = async (req, res, next) => {
             toStation: req.body.ticket?.toStation,
             departureTime: req.body.ticket?.departureTime,
             quantity: req.body.ticket?.quantity,
+            price: req.body.ticket?.price
         }
 	};
 
