@@ -15,31 +15,31 @@ const ticket = new mongoose.Schema({
     type: String,
     required: true
   },
-  route: {
+  fromStation: {
+    type: String,
+    required: true
+  },
+  toStation: {
     type: String,
     required: true
   },
   departureTime: {
-    type: Date,
+    type: String,
     required: true
   },
   quantity: {
     type: Number,
     required: true
   },
-  price: {
-    type: Number,
-    required: true
-  }
 },
   { timestamps: true }
 );
 
 ticket.statics = {
   add(ticket) {
-    const ticketObj = new Ticket(ticket);
-    ticketObj.save();
-    return ticketObj;
+      const ticketObj = new Ticket(ticket);
+      ticketObj.save();
+      return ticketObj;
   },
 };
 

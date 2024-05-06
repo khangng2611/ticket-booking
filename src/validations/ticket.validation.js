@@ -10,10 +10,10 @@ const ticketValidation = {
             phone: Joi.string().required()
         }),
         ticket: Joi.object().keys({
-            route: Joi.string().required(),
+            fromStation: Joi.string().required(),
+            toStation: Joi.string().required(),
             departureTime: Joi.string().required(),
-            quantity: Joi.number().required(),
-            price: Joi.number().required()
+            quantity: Joi.number().required().min(1),
         }),
     })
 };
@@ -26,10 +26,10 @@ export const bookTicketValidation = async (req, res, next) => {
             phone: req.body.customer?.phone
         } ,
         ticket: {
-            route: req.body.ticket?.route,
+            fromStation: req.body.ticket?.fromStation,
+            toStation: req.body.ticket?.toStation,
             departureTime: req.body.ticket?.departureTime,
             quantity: req.body.ticket?.quantity,
-            price: req.body.ticket?.price
         }
 	};
 
